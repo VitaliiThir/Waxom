@@ -1,0 +1,145 @@
+@import 'plug/rem';
+@import 'plug/variables';
+@import 'plug/media-queries';
+@import 'plug/mixins';
+@import 'plug/popup';
+@import '../../node_modules/rfs/scss/rfs';
+
+.header {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding-top: 40px;
+  logo {
+    max-width: 180px;
+    img {
+      max-width: 100%;
+    }
+  }
+  //////////////
+  .navigation {
+    display: flex;
+    width: 100%;
+    padding-top: 20px;
+    nav {
+      flex-grow: 3;
+      ul {
+        display: flex;
+        justify-content: space-around;
+        font-size: 14px;
+        li {
+          cursor: pointer;
+          flex-grow: 1;
+          text-align: center;
+          a {
+            position: relative;
+            display: block;
+            font-family: $font-family-base;
+            color: #ffffff;
+            transition: all .2s linear;
+            font-size: inherit;
+            font-weight: 300;
+            padding: 5px 0;
+            &::after,
+            &::before {
+              position: absolute;
+              content: "";
+              background-color: #c7b299;
+              transition: width .2s linear;
+              height: 2px;
+              width: 0;
+            }
+            &::after {
+              right: 0;
+              bottom: 100%;
+            }
+            &::before {
+              left: 0;
+              top: 100%;
+            }
+            &:hover {
+              color: #c7b299;
+              &::after,
+              &::before {
+                width: 100%;
+              }
+            }
+            &.selected {
+              color: #c7b299;
+              &::after,
+              &::before {
+                width: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+    .search {
+      display: flex;
+      flex-grow: 1;
+      justify-content: flex-end;
+      div {
+        cursor: pointer;
+        margin-right: 30px;
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+      img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+      &-cart,
+      &-icon {
+        height: 25px;
+        width: 25px;
+      }
+    }
+  }
+}
+
+/* Верхний слайдер */
+.top-slider {
+  figure {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1024px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    figcaption {
+      color: #fff;
+      text-align: center;
+      max-width: 589px;
+      h3,
+      h1 {
+        font-family: $font-family-ral;
+        font-style: normal;
+        line-height: 1em;
+        margin-bottom: rem(15px);
+      }
+      h3 {
+        @include rfs(36);
+        color: inherit;
+        font-weight: 400;
+      }
+      h1 {
+        @include rfs(52);
+        color: inherit;
+        font-weight: 600;
+      }
+      p {
+        color: inherit;
+        font-family: $font-family-base;
+        font-size: rem(16px);
+        font-weight: 300;
+        line-height: 1.5em;
+      }
+    }
+  }
+}
+/*END Верхний слайдер */
