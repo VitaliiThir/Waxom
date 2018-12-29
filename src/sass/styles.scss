@@ -5,6 +5,32 @@
 @import 'plug/popup';
 @import '../../node_modules/rfs/scss/rfs';
 
+@mixin button($padding: 1em 2.5em) {
+  font-family: $font-family-ral;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all .2s linear;
+  font-size: rem(14px);
+  font-style: normal;
+  font-weight: 400;
+  text-transform: uppercase;
+  padding: $padding;
+  border: 1px solid #998675;
+  border-bottom: 3px solid darken(#998675, 20%);
+  border-radius: 3px;
+  background-color: #998675;
+  @include mediaToUp($lg) {
+    &:active {
+      background-color: transparent;
+    }
+  }
+  @include mediaToUp($lg) {
+    &:hover {
+      background-color: transparent;
+    }
+  }
+}
+////////////////////////////////////////////////////////////
 .header {
   position: absolute;
   z-index: 10;
@@ -47,7 +73,7 @@
               position: absolute;
               content: "";
               background-color: #c7b299;
-              transition: width .2s linear;
+              transition: width .3s linear;
               height: 2px;
               width: 0;
             }
@@ -96,6 +122,17 @@
       &-icon {
         height: 25px;
         width: 25px;
+        transition: opacity .2s linear;
+        @include mediaToDown($lg) {
+          &:active {
+            opacity: 0.6;
+          }
+        }
+        @include mediaToUp($lg) {
+          &:hover {
+            opacity: 0.6;
+          }
+        }
       }
     }
   }
@@ -103,15 +140,27 @@
 
 /* Верхний слайдер */
 .top-slider {
+  position: relative;
   figure {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 1024px;
+    height: 100vh;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    &::after {
+      @include pseudo();
+      background-color: rgba(17, 17, 17, 0.7);
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+    }
     figcaption {
+      position: relative;
+      z-index: 1;
       color: #fff;
       text-align: center;
       max-width: 589px;
@@ -138,8 +187,389 @@
         font-size: rem(16px);
         font-weight: 300;
         line-height: 1.5em;
+        margin-bottom: rem(52px);
+      }
+    }
+    button {
+      @include button;
+    }
+  }
+  .owl-nav {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    pointer-events: none;
+    .owl-next,
+    .owl-prev {
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: transparent;
+      transition: opacity .2s linear;
+      pointer-events: all;
+      opacity: 0.5;
+      width: rem(40px);
+      height: rem(73px);
+      &:hover {
+        background-color: transparent;
+        opacity: 1;
+      }
+    }
+    .owl-next {
+      margin-right: 150px;
+      background-image: url('../img/top_slider/right-arrow.svg');
+    }
+    .owl-prev {
+      background-image: url('../img/top_slider/left-arrow.svg');
+      margin-left: 150px;
+    }
+  }
+  .owl-dots {
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    text-align: center;
+    bottom: rem(40px);
+    .owl-dot {
+      span {
+        background-color: #869791;
+      }
+      &.active {
+        span {
+          border: 2px solid #d3c1ad;
+          background-color: transparent;
+        }
       }
     }
   }
 }
 /*END Верхний слайдер */
+////////////////////////////////////////////////////////////
+/* Услуги */
+.services {
+  margin-top: rem(60px);
+  margin-bottom: rem(80px);
+  background-color: #fff;
+  figure {
+    position: relative;
+    height: 100%;
+    padding-bottom: rem(30px);
+    &::after {
+      @include pseudo();
+      top: 100%;
+      left: 50%;
+      height: 3px;
+      background-color: #f1eee9;
+      width: 25%;
+      transform: translateX(-50%);
+    }
+    .services-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: rem(90px);
+      width: 100%;
+      svg {
+        flex: 0 0 auto;
+        max-width: 20%;
+        fill: #555;
+      }
+    }
+    figcaption {
+      text-align: center;
+      font-style: normal;
+      flex: 0 0 auto;
+      h4 {
+        font-family: $font-family-ral;
+        color: #555555;
+        @include rfs(22);
+        font-weight: 400;
+        font-style: inherit;
+        line-height: 1em;
+        margin-bottom: 0.9em;
+      }
+      p {
+        font-family: $font-family-base;
+        color: #8c8c8c;
+        font-size: 14px;
+        font-style: inherit;
+        font-weight: 300;
+        line-height: 1.5em;
+      }
+    }
+  }
+}
+/*END Услуги */
+////////////////////////////////////////////////////////////
+/* Waxom is Realization of your Ideas */
+.ideas {
+  background-color: #fbfaf8;
+  font-style: normal;
+  text-align: center;
+  padding-top: rem(85px);
+  &__heading {
+    font-family: $font-family-ral;
+    @include rfs(30);
+    margin-bottom: 0.8em;
+    h2 {
+      color: #555555;
+      font-size: inherit;
+      line-height: 1em;
+      font-weight: 400;
+      font-style: inherit;
+    }
+  }
+  &__description {
+    font-family: $font-family-base;
+    font-size: rem(16px);
+    margin-bottom: 2.5em;
+    max-width: 757px;
+    @include mx-auto;
+    p {
+      color: #8c8c8c;
+      font-size: inherit;
+      font-style: inherit;
+      font-weight: 300;
+      line-height: 1.75em;
+    }
+  }
+  figure {
+    img {
+      max-width: 100%;
+    }
+  }
+  ////////////////////
+  &-theme {
+    text-align: left;
+    font-style: normal;
+    padding-top: rem(50px);
+    padding-bottom: rem(50px);
+    background-image: linear-gradient(to right, #211b19 0%, #4e3427 100%);
+    h3 {
+      font-family: $font-family-ral;
+      color: #ffffff;
+      @include rfs(28);
+      font-weight: 400;
+      font-style: inherit;
+      line-height: 1em;
+      margin-bottom: 0.3em;
+      span {
+        color: #c7b299;
+      }
+    }
+    p {
+      font-family: $font-family-base;
+      color: #615855;
+      font-size: rem(18px);
+      font-style: inherit;
+      font-weight: 300;
+      line-height: 1em;
+    }
+    button {
+      @include button(0.9em 2em);
+    }
+  }
+}
+/*END Waxom is Realization of your Ideas */
+////////////////////////////////////////////////////////////
+/* Our Latest Projects */
+.projects {
+  padding-top: rem(80px);
+  padding-bottom: rem(80px);
+  font-style: normal;
+  &__description {
+    text-align: center;
+    margin-bottom: rem(40px);
+    max-width: 780px;
+    @include mx-auto;
+    h2 {
+      color: #555555;
+      font-family: $font-family-ral;
+      @include rfs(30);
+      font-weight: 400;
+      font-style: inherit;
+      line-height: 1em;
+      margin-bottom: 0.8em;
+    }
+    p {
+      font-family: $font-family-base;
+      color: #8c8c8c;
+      font-size: rem(16px);
+      font-weight: 300;
+      font-style: inherit;
+      line-height: 1.75em;
+    }
+  }
+  nav {
+    max-width: 605px;
+    @include mx-auto;
+    margin-bottom: rem(40px);
+    ul {
+      font-family: $font-size-base;
+      display: flex;
+      li {
+        flex-grow: 1;
+        color: #8c8c8c;
+        cursor: pointer;
+        text-align: center;
+        margin-right: rem(10px);
+        border-radius: 3px;
+        border: 1px solid #ebebeb;
+        font-size: 14px;
+        transition: all .2s linear;
+        font-style: inherit;
+        font-weight: 300;
+        line-height: 1em;
+        padding: 0.7em 0;
+        &:last-child {
+          margin-right: 0;
+        }
+        @include mediaToDown($lg) {
+          &:active {
+            color: #ffffff;
+            background-color: #998675;
+          }
+        }
+        @include mediaToUp($lg) {
+          &:hover {
+            color: #ffffff;
+            background-color: #998675;
+          }
+        }
+        &.selected {
+          color: #ffffff;
+          background-color: #998675;
+        }
+      }
+    }
+  }
+  &-items {
+    figure {
+      cursor: pointer;
+      .projects-items__img {
+        position: relative;
+        @include responsive-ratio(1, 0.62, true);
+        overflow: hidden;
+        img[alt="Image"] {
+          display: block;
+          width: 100%;
+          transition: transform 8s linear;
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+        }
+        &-popup {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: rgba(17, 17, 17, 0.7);
+          opacity: 0;
+          transition: all .5s linear;
+          right: 0;
+          left: 0;
+          top: 0;
+          bottom: 0;
+          &-icons {
+            img {
+              transition: all .1s linear;
+              transition-delay: .2s;
+              opacity: 0;
+              max-width: 100%;
+              &:first-child {
+                transform: translateX(-150px);
+                margin-right: rem(30px);
+              }
+              &:nth-child(2) {
+                transform: translateX(150px);
+              }
+            }
+          }
+        }
+      }
+      figcaption {
+        position: relative;
+        transition: background-color .3s linear;
+        background-color: #fbfaf8;
+        padding: rem(30px);
+        &::before{
+          @include pseudo;
+          bottom: 100%;
+          left: rem(20px);
+          transition: border-bottom-color .3s linear;
+          border-bottom: 10px solid #fbfaf8;
+          border-right: 15px solid transparent;
+          border-left: 15px solid transparent;
+        }
+        h4, p {
+          transition: color .2s linear;
+        }
+        h4 {
+          font-family: $font-family-ral;
+          color: #c7b299;
+          @include rfs(20);
+          font-style: inherit;
+          line-height: 1em;
+          font-weight: 500;
+          margin-bottom: 0.75em;
+        }
+        p {
+          font-family: $font-size-base;
+          color: #d1d1d1;
+          font-size: 14px;
+          font-weight: 300;
+          font-style: inherit;
+          line-height: 1.4em;
+        }
+      }
+      &:hover {
+        figcaption {
+          background-color: #362f2d;
+          h4 {
+            color: #ffffff;
+          }
+          p {
+            color: #c7b299;
+          }
+          &::before {
+            border-bottom-color: #362f2d;
+          }
+        }
+        .projects-items__img-popup {
+          opacity: 1;
+          &-icons {
+            img {
+              opacity: 1;
+              &:first-child {
+                transform: translateX(0);
+              }
+              &:nth-child(2) {
+                transform: translateX(0);
+              }
+            }
+          }
+        }
+        img[alt="Image"] {
+          transform: scale(1.5);
+        }
+      }
+    }
+    button {
+      display: block;
+      @include button;
+      @include mx-auto;
+      margin-top: rem(20px);
+      &:hover {
+        color: #998675;
+      }
+    }
+  }
+}
+/*END Our Latest Projects */

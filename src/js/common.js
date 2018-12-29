@@ -9,21 +9,22 @@ $(window).on('load', function () {
 
 document.addEventListener("DOMContentLoaded", function (event) {
 
-    let block = $('.block');
+    /*let block = $('.block');
     $('button').on('click', function () {
         popUp(block);
-    });
+    });*/
 
     $('.top-slider').owlCarousel({
         items: 1,
         autoplay: true,
-        autoplayHoverPause: true,
         autoplayTimeout: 7000,
+        autoplaySpeed: 3000,
         dots: true,
         dotsEach: true,
-        pagination: true,
         nav: true,
-        smartSpeed: 3000,
+        navText: false,
+        navSpeed: 1500,
+        margin: 0,
         loop: true,
         mouseDrag: true,
         touchDrag: true

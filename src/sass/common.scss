@@ -118,13 +118,6 @@ svg {
 
 /*END Preloader */
 /* Global styles end*/
-
-/* Это можно удалить перед началом работы */
-body {
-  background-color: #006d84;
-}
-
-
 .footer {
   display: flex;
   align-items: center;
@@ -135,7 +128,6 @@ body {
   font-weight: 700;
   text-align: center;
   background-color: #008ca9;
-  box-shadow: 0 -25px 150px 0 rgba(#000, .2);
   p {
     color: #003040;
     font-size: inherit;
