@@ -220,27 +220,27 @@
                     mutationem consuetudium.
                 </p>
             </div>
-            <nav>
+            <nav class="filter-block">
                 <ul>
-                    <li class="selected">All</li>
-                    <li>Web Design</li>
-                    <li>Mobile App</li>
-                    <li>Illustration</li>
-                    <li>Photography</li>
+                    <li class="selected filter" data-filter="all">All</li>
+                    <li class="filter" data-filter=".aaa">Web Design</li>
+                    <li class="filter" data-filter=".bbb">Mobile App</li>
+                    <li class="filter" data-filter=".ccc">Illustration</li>
+                    <li class="filter" data-filter=".ddd">Photography</li>
                 </ul>
             </nav>
             <div class="projects-items">
-                <div class="row">
-                    <div class="mb-md-4 col-lg-4">
+                <div class="row" id="mix-row">
+                    <div class="mb-md-4 col-lg-4 mix aaa ddd ccc">
                         <figure>
                             <div class="projects-items__img">
                                 <img src="img/projects/1.jpg" alt="Image">
-                                <a href="#" class="projects-items__img-popup">
+                                <div class="projects-items__img-popup">
                                     <div class="projects-items__img-popup-icons">
-                                        <img src="img/projects/link.svg" alt="Icon">
-                                        <img src="img/projects/zoom.svg" alt="Icon">
+                                        <a href="#" target="_blank"><img src="img/projects/link.svg" alt="Icon"></a>
+                                        <a class="fancybox" href="img/projects/1.jpg"><img src="img/projects/zoom.svg" alt="Icon"></a>
                                     </div>
-                                </a>
+                                </div>
                             </div>
                             <figcaption>
                                 <h4>
@@ -252,16 +252,16 @@
                             </figcaption>
                         </figure>
                     </div>
-                    <div class="mb-md-4 col-lg-4">
+                    <div class="mb-md-4 col-lg-4 mix aaa bbb">
                         <figure>
                             <div class="projects-items__img">
                                 <img src="img/projects/2.jpg" alt="Image">
-                                <a href="#" class="projects-items__img-popup">
+                                <div class="projects-items__img-popup">
                                     <div class="projects-items__img-popup-icons">
-                                        <img src="img/projects/link.svg" alt="Icon">
-                                        <img src="img/projects/zoom.svg" alt="Icon">
+                                        <a href="#" target="_blank"><img src="img/projects/link.svg" alt="Icon"></a>
+                                        <a class="fancybox" href="img/projects/2.jpg"><img src="img/projects/zoom.svg" alt="Icon"></a>
                                     </div>
-                                </a>
+                                </div>
                             </div>
                             <figcaption>
                                 <h4>
@@ -273,16 +273,16 @@
                             </figcaption>
                         </figure>
                     </div>
-                    <div class="mb-md-4 col-lg-4">
+                    <div class="mb-md-4 col-lg-4 mix bbb ccc ">
                         <figure>
                             <div class="projects-items__img">
                                 <img src="img/projects/3.jpg" alt="Image">
-                                <a href="#" class="projects-items__img-popup">
+                                <div class="projects-items__img-popup">
                                     <div class="projects-items__img-popup-icons">
-                                        <img src="img/projects/link.svg" alt="Icon">
-                                        <img src="img/projects/zoom.svg" alt="Icon">
+                                        <a href="#" target="_blank"><img src="img/projects/link.svg" alt="Icon"></a>
+                                        <a class="fancybox" href="img/projects/3.jpg"><img src="img/projects/zoom.svg" alt="Icon"></a>
                                     </div>
-                                </a>
+                                </div>
                             </div>
                             <figcaption>
                                 <h4>
@@ -294,16 +294,16 @@
                             </figcaption>
                         </figure>
                     </div>
-                    <div class="mb-md-4 col-lg-4">
+                    <div class="mb-md-4 col-lg-4 mix bbb ddd ccc">
                         <figure>
                             <div class="projects-items__img">
                                 <img src="img/projects/4.jpg" alt="Image">
-                                <a href="#" class="projects-items__img-popup">
+                                <div class="projects-items__img-popup">
                                     <div class="projects-items__img-popup-icons">
-                                        <img src="img/projects/link.svg" alt="Icon">
-                                        <img src="img/projects/zoom.svg" alt="Icon">
+                                        <a href="#" target="_blank"><img src="img/projects/link.svg" alt="Icon"></a>
+                                        <a class="fancybox" href="img/projects/4.jpg"><img src="img/projects/zoom.svg" alt="Icon"></a>
                                     </div>
-                                </a>
+                                </div>
                             </div>
                             <figcaption>
                                 <h4>
@@ -315,16 +315,16 @@
                             </figcaption>
                         </figure>
                     </div>
-                    <div class="mb-md-4 col-lg-4">
+                    <div class="mb-md-4 col-lg-4 mix bbb aaa ccc">
                         <figure>
                             <div class="projects-items__img">
                                 <img src="img/projects/5.jpg" alt="Image">
-                                <a href="#" class="projects-items__img-popup">
+                                <div class="projects-items__img-popup">
                                     <div class="projects-items__img-popup-icons">
-                                        <img src="img/projects/link.svg" alt="Icon">
-                                        <img src="img/projects/zoom.svg" alt="Icon">
+                                        <a href="#" target="_blank"><img src="img/projects/link.svg" alt="Icon"></a>
+                                        <a class="fancybox" href="img/projects/5.jpg"><img src="img/projects/zoom.svg" alt="Icon"></a>
                                     </div>
-                                </a>
+                                </div>
                             </div>
                             <figcaption>
                                 <h4>
@@ -336,16 +336,16 @@
                             </figcaption>
                         </figure>
                     </div>
-                    <div class="mb-md-4 col-lg-4">
+                    <div class="mb-md-4 col-lg-4 mix ddd aaa ccc">
                         <figure>
                             <div class="projects-items__img">
                                 <img src="img/projects/6.jpg" alt="Image">
-                                <a href="#" class="projects-items__img-popup">
+                                <div class="projects-items__img-popup">
                                     <div class="projects-items__img-popup-icons">
-                                        <img src="img/projects/link.svg" alt="Icon">
-                                        <img src="img/projects/zoom.svg" alt="Icon">
+                                        <a href="#" target="_blank"><img src="img/projects/link.svg" alt="Icon"></a>
+                                        <a class="fancybox" href="img/projects/6.jpg"><img src="img/projects/zoom.svg" alt="Icon"></a>
                                     </div>
-                                </a>
+                                </div>
                             </div>
                             <figcaption>
                                 <h4>
@@ -365,6 +365,29 @@
         </div>
     </article>
     <!--END Our Latest Projects -->
+
+    <!-- Waxom Video Presentation -->
+    <section class="presentation">
+        <div class="presentation-video">
+            <div class="video-bg" style="background-image: url('img/video/bg.jpg');">
+                <figure class="video-bg-item">
+                    <div class="video-bg-item-button">
+                        <img src="img/video/play-circle.svg" alt="Play">
+                        <img src="img/video/play.svg" alt="Play">
+                    </div>
+                    <figcaption>
+                        <h3>
+                            Waxom Video Presentation
+                        </h3>
+                        <p>
+                            Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius, qui sequitur mutationem consuetudium.
+                        </p>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+    </section>
+    <!--END Waxom Video Presentation -->
 </main>
 <!-- Footer -->
 //= template/footer.html
@@ -375,6 +398,7 @@
 <script src="js/libs.js"></script>
 <script src="js/modal.js"></script>
 <script src="js/svg.js"></script>
+<script src="js/jquery.mixitup.min.js"></script>
 <script src="js/common.js"></script>
 </body>
 </html>
