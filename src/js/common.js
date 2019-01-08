@@ -66,4 +66,61 @@ document.addEventListener("DOMContentLoaded", function (event) {
     });
     /*END Excellent for Mobile Devices */
 
+    /* Counter */
+    let show = true;
+    let countbox = "#counts";
+    if (document.querySelector(countbox)) {
+        $(window).on("scroll load resize", function(){
+
+            if(!show) return false;
+
+            let w_top = $(window).scrollTop();
+            let e_top = $(countbox).offset().top;
+
+            let w_height = $(window).height();
+            let d_height = $(document).height();
+
+            let e_height = $(countbox).outerHeight();
+
+            if(w_top + 700 >= e_top || w_height + w_top == d_height || e_height + e_top < w_height){
+                $(".spincrement").spincrement({
+                    thousandSeparator: "",
+                    duration: 2000
+                });
+
+                show = false;
+            }
+        });
+    }
+    /*END Counter */
+
+    /* Posts */
+    $('#posts-slider').owlCarousel({
+        responsive: {
+           576: {
+               items: 1
+           } ,
+            768: {
+               items: 2
+            },
+            992: {
+               items: 3
+            }
+        },
+        autoplay: true,
+        autoplayTimeout: 7000,
+        autoplaySpeed: 3000,
+        dots: true,
+        dotsEach: true,
+        nav: true,
+        navText: false,
+        navSpeed: 1500,
+        margin: 30,
+        center: true,
+        loop: true,
+        mouseDrag: true,
+        touchDrag: true
+    });
+    /*END Posts */
+
 });
