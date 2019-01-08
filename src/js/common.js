@@ -59,4 +59,11 @@ document.addEventListener("DOMContentLoaded", function (event) {
     });
     /*END Video */
 
+    /* Excellent for Mobile Devices */
+    $('.devices-description ul li').on('click', function () {
+        $(this).children('ul').slideToggle(400);
+        $(this).toggleClass('active');
+    });
+    /*END Excellent for Mobile Devices */
+
 });

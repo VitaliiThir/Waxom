@@ -288,7 +288,7 @@
         font-family: $font-family-ral;
         color: #555555;
         @include rfs(22);
-        font-weight: 400;
+        font-weight: 700;
         font-style: inherit;
         line-height: 1em;
         margin-bottom: 0.9em;
@@ -320,7 +320,7 @@
       color: #555555;
       font-size: inherit;
       line-height: 1em;
-      font-weight: 400;
+      font-weight: 700;
       font-style: inherit;
     }
   }
@@ -391,7 +391,7 @@
       color: #555555;
       font-family: $font-family-ral;
       @include rfs(30);
-      font-weight: 400;
+      font-weight: 700;
       font-style: inherit;
       line-height: 1em;
       margin-bottom: 0.8em;
@@ -680,3 +680,76 @@
     }
   }
 }
+
+/* Excellent for Mobile Devices. */
+.devices {
+  &-image {
+    @include background($size: contain, $position: center bottom);
+    height: 100%;
+  }
+  &-description {
+    padding-top: 195px;
+    padding-bottom: 180px;
+    h2 {
+      color: #555555;
+      font-family: $font-family-ral;
+      @include rfs(30);
+      font-weight: 700;
+      font-style: normal;
+      line-height: 1em;
+      margin-bottom: 1.3em;
+    }
+    p, li {
+      color: #8c8c8c;
+      font-family: $font-family-base;
+      font-size: rem(16px);
+      font-style: normal;
+      font-weight: 300;
+    }
+    p {
+      line-height: 1.75em;
+      margin-bottom: 2.8em;
+    }
+    ul {
+      padding-left: 100px;
+      li {
+        position: relative;
+        line-height: 1.5em;
+        margin-bottom: 1em;
+        pointer-events: none;
+        &::before {
+          @include pseudo;
+          pointer-events: all;
+          cursor: pointer;
+          background-image: url('../img/devices-arrow.svg');
+          @include background($size: 50%);
+          background-color: #c7b299;
+          border-radius: 50%;
+          top: 0;
+          left: -2em;
+          width: 1.5em;
+          height: 1.5em;
+          transition: transform .4s linear;
+
+        }
+        &.active {
+          &::before {
+            transform: rotate(90deg);
+          }
+        }
+        ul {
+          display: none;
+          padding-left: 0;
+          li {
+            line-height: 1.5em;
+            margin-bottom: 0;
+            &::before {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+/*END Excellent for Mobile Devices. */
