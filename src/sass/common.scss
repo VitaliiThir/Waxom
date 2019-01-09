@@ -13,6 +13,7 @@
 html,
 body {
   height: 100%;
+  width: 100%;
 }
 
 ul, ol, li {
@@ -118,24 +119,4 @@ svg {
 
 /*END Preloader */
 /* Global styles end*/
-.footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #000;
-  @include rfs(32);
-  height: 2em;
-  font-weight: 700;
-  text-align: center;
-  background-color: #008ca9;
-  p {
-    color: #003040;
-    font-size: inherit;
-    font-weight: 500;
-    line-height: 1em;
-    text-shadow: -8px 8px 8px rgba(#000, .3);
-  }
-}
-
-/*END Это можно удалить перед началом работы */
 

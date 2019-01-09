@@ -8,16 +8,45 @@ $(function () {
     let servicesIcon_4 = $('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="52" height="36" viewBox="0 0 52 36"><defs><path id="ornsa" d="M1388.738 1146.147v-22.164c0-1.364 1.105-2.482 2.458-2.48h10.816v-1.445c0-.995.382-1.923 1.082-2.628a3.64 3.64 0 0 1 2.607-1.095h6.29c2.029 0 3.684 1.667 3.684 3.723v1.443h10.816c1.35 0 2.458 1.118 2.458 2.482v1.654h-26.207c-2.267 0-4.74 1.55-5.742 3.608zm15.732-24.645h8.747v-1.444c0-.688-.55-1.243-1.228-1.243h-6.29c-.327 0-.636.13-.867.368a1.25 1.25 0 0 0-.362.875zm25.451 28.26c-.595 1.222-2.193 2.222-3.543 2.222h-35.298c-1.35 0-1.968-1.002-1.369-2.221l9.492-19.422c.593-1.223 2.189-2.226 3.539-2.226h35.298c1.354 0 1.969 1.003 1.371 2.226z"/></defs><g><g transform="translate(-1388 -1116)"><use xlink:href="#ornsa"/><use xlink:href="#ornsa"/></g></g></svg>');
 
     let arrServicesImg = [];
-    let arrServicesIcon = [servicesIcon_1, servicesIcon_2, servicesIcon_3,servicesIcon_4];
+    let arrServicesIcon = [servicesIcon_1, servicesIcon_2, servicesIcon_3, servicesIcon_4];
 
     $('.services-icon').each(function () {
         arrServicesImg.push(this);
     });
     $(arrServicesImg).each(function (a, b) {
         $(arrServicesIcon).each(function (c, d) {
-            if(a == c) {
+            if (a == c) {
                 $(b).append($(d));
             }
         });
     });
+
+    /* Posts slider */
+    let postsRightArrow = $('<?xml version="1.0" encoding="iso-8859-1"?>\n' +
+        '<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->\n' +
+        '<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">\n' +
+        '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 612 612" style="enable-background:new 0 0 612 612;" xml:space="preserve">\n' +
+        '<g>\n' +
+        '\t<g id="Right">\n' +
+        '\t\t<g>\n' +
+        '\t\t\t<path d="M277.58,179.679l-0.057,0.077c-5.125-4.705-11.857-7.631-19.335-7.631c-15.835,0-28.688,12.852-28.688,28.688     c0,8.377,3.634,15.835,9.352,21.076l-0.057,0.077L330.48,306l-91.686,84.055l0.057,0.076c-5.718,5.221-9.352,12.68-9.352,21.057     c0,15.836,12.852,28.688,28.688,28.688c7.478,0,14.21-2.926,19.335-7.611l0.057,0.076l114.75-105.188     c5.91-5.451,9.295-13.101,9.295-21.152s-3.385-15.702-9.295-21.152L277.58,179.679z M306,0C137.012,0,0,137.012,0,306     s137.012,306,306,306s306-137.012,306-306S474.988,0,306,0z M306,554.625C168.912,554.625,57.375,443.088,57.375,306     S168.912,57.375,306,57.375S554.625,168.912,554.625,306S443.088,554.625,306,554.625z"/>\n' +
+        '\t\t</g>\n' +
+        '\t</g>\n' +
+        '</g>\n' +
+        '</svg>\n');
+    let postsLeftArrow = $('<?xml version="1.0" encoding="iso-8859-1"?>\n' +
+        '<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->\n' +
+        '<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">\n' +
+        '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 612 612" style="enable-background:new 0 0 612 612;" xml:space="preserve">\n' +
+        '<g>\n' +
+        '\t<g id="Left">\n' +
+        '\t\t<g>\n' +
+        '\t\t\t<path d="M353.812,172.125c-7.478,0-14.21,2.926-19.335,7.612l-0.058-0.077L219.67,284.848c-5.91,5.451-9.295,13.101-9.295,21.152     s3.385,15.701,9.295,21.152L334.42,432.34l0.058-0.076c5.125,4.686,11.857,7.611,19.335,7.611     c15.836,0,28.688-12.852,28.688-28.688c0-8.357-3.634-15.836-9.353-21.076l0.058-0.076L281.52,306l91.685-84.054l-0.058-0.077     c5.719-5.221,9.353-12.68,9.353-21.057C382.5,184.977,369.648,172.125,353.812,172.125z M306,0C137.012,0,0,137.012,0,306     s137.012,306,306,306s306-137.012,306-306S474.988,0,306,0z M306,554.625C168.912,554.625,57.375,443.088,57.375,306     S168.912,57.375,306,57.375S554.625,168.912,554.625,306S443.088,554.625,306,554.625z"/>\n' +
+        '\t\t</g>\n' +
+        '\t</g>\n' +
+        '</g>\n' +
+        '</svg>\n');
+    $('.posts-slider .owl-prev').append(postsLeftArrow);
+    $('.posts-slider .owl-next').append(postsRightArrow);
+    /*END Posts slider */
 });

@@ -40,7 +40,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
         navSpeed: 1500,
         margin: 0,
         loop: true,
-        mouseDrag: true,
         touchDrag: true
     });
     /*END Top Slider */
@@ -110,8 +109,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         autoplay: true,
         autoplayTimeout: 7000,
         autoplaySpeed: 3000,
-        dots: true,
-        dotsEach: true,
+        dots: false,
         nav: true,
         navText: false,
         navSpeed: 1500,
@@ -122,5 +120,70 @@ document.addEventListener("DOMContentLoaded", function (event) {
         touchDrag: true
     });
     /*END Posts */
+
+    /* Partners slider */
+    $('#partners-slider').owlCarousel({
+        responsive: {
+            576: {
+                items: 2
+            } ,
+            768: {
+                items: 3
+            },
+            992: {
+                items: 4
+            }
+        },
+        autoplay: true,
+        autoplayTimeout: 7000,
+        autoplaySpeed: 3000,
+        dots: false,
+        nav: false,
+        navSpeed: 1500,
+        margin: 90,
+        loop: true,
+        touchDrag: true
+    });
+    /*END Partners slider */
+
+    /* Wow.js */
+    let wow = new WOW({
+        boxClass: 'wow', // default
+        animateClass: 'animated', // default
+        offset: 50, // default
+        mobile: false, // default
+        live: true // default
+    });
+    wow.init();
+    /*END Wow.js */
+
+    /* Scroll */
+    function handler(event) {
+        let hash = event.target.hash;
+
+        if (hash) {
+            let tag = $(hash);
+            if ($(hash).length) {
+                let offset = tag.offset().top;
+                $('html, body').stop().animate({scrollTop: offset}, 900);
+            }
+        }
+    }
+    $('.header nav ul li a').on("click", handler);
+
+    //////////////////////////////
+
+    function activeMenuLink() {
+        $('.header nav ul li a').each(function(){
+            let selector = $(this).attr('href');
+            let windowTop = $(window).scrollTop();
+            let sectionTop = $(selector).offset().top;
+            if(windowTop > sectionTop -150){
+                $('.header nav ul li a').removeClass('selected').filter(this).addClass('selected');
+            }
+        });
+    }
+    activeMenuLink();
+    /*END Scroll */
 
 });
