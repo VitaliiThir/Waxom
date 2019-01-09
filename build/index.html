@@ -16,7 +16,14 @@
 </head>
 <body>
 <!-- Preloader -->
-<!--//= template/preloader.html-->
+<div class="preloader">
+    <div class="preloader-item">
+        <div class="preloader-item-gif"></div>
+        <div class="preloader-item-text">
+            <p>Loading...</p>
+        </div>
+    </div>
+</div>
 <!--END Preloader -->
 <!-- Header -->
 <div class="squeeze-wrapper">
@@ -57,7 +64,7 @@
 			</div>
 		</header>
 <!--END Header -->
-<main>
+<main id="top">
     <!-- Slider -->
     <section class="top-slider owl-carousel owl-theme">
         <figure style="background-image:url('img/top_slider/sl_1.jpg');">
@@ -215,12 +222,12 @@
     <!-- Waxom is Realization of your Ideas -->
     <section class="ideas">
         <div class="container">
-            <div class="ideas__heading">
+            <div class="ideas__heading wow fadeInUp">
                 <h2>
                     Waxom is Realization of your Ideas.
                 </h2>
             </div>
-            <div class="ideas__description">
+            <div class="ideas__description wow fadeInUp">
                 <p>
                     Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur
                     mutationem consuetudium.
@@ -256,10 +263,10 @@
     <article id="portfolio" class="projects">
         <div class="container">
             <div class="projects__description">
-                <h2>
+                <h2 class="wow fadeInUp">
                     Our Latest Projects.
                 </h2>
-                <p>
+                <p class="wow fadeInUp">
                     Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur
                     mutationem consuetudium.
                 </p>
@@ -420,10 +427,10 @@
                         <img src="img/video/play.svg" alt="Play">
                     </div>
                     <figcaption>
-                        <h3>
+                        <h3 class="wow fadeInUp">
                             Waxom Video Presentation
                         </h3>
-                        <p>
+                        <p class="wow fadeInUp">
                             Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius, qui sequitur mutationem consuetudium.
                         </p>
                     </figcaption>
@@ -438,7 +445,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-5">
-                    <div class="devices-image" style="background-image:url('img/devices-image.png');"></div>
+                    <div class="devices-image wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.2s" style="background-image:url('img/devices-image.png');"></div>
                 </div>
                 <div class="col-lg-7">
                     <div class="devices-description">
@@ -575,10 +582,10 @@
     <div id="posts" class="posts">
         <div class="container">
             <div class="posts__heading">
-                <h2>
+                <h2 class="wow fadeInUp">
                     Recent Posts.
                 </h2>
-                <p>
+                <p class="wow fadeInUp">
                     Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur
                     mutationem consuetudium.
                 </p>
@@ -722,7 +729,7 @@
     <!--END Recent Posts. -->
     
     <!-- Partners logo -->
-    <div class="partners" style="background-image:url('img/partners/bg.jpg');">
+    <div id="footer" class="partners" style="background-image:url('img/partners/bg.jpg');">
         <div class="container">
             <div class="partners-slider owl-carousel owl-theme" id="partners-slider">
                 <figure><img src="img/partners/1.svg" alt="Logo"></figure>
@@ -738,10 +745,13 @@
     </div>
     <!--END Partners logo -->
 </main>
+<!-- Scroll Button -->
+<div class="scroll-button"></div>
+<!--END Scroll Button -->
 <!-- Footer -->
 </div>
 <!-- content end -->
-<footer id="footer" class="footer squeeze-footer">
+<footer class="footer squeeze-footer">
     <div class="footer-top">
         <div class="container">
             <div class="row">

@@ -32,14 +32,24 @@
 }
 ////////////////////////////////////////////////////////////
 .header {
-  position: absolute;
+  position: fixed;
   z-index: 10;
   top: 0;
   left: 0;
   right: 0;
+  transition: all .4s linear;
   padding-top: 40px;
-  logo {
+  &.fixed {
+    background-color: rgba(#45353B, .7);
+    transform: translateY(-25px);
+    padding-bottom: 15px;
+    .logo {
+      max-width: 160px;
+    }
+  }
+  .logo {
     max-width: 180px;
+    transition: max-width .4s linear;
     img {
       max-width: 100%;
     }
@@ -170,6 +180,9 @@
       color: #fff;
       text-align: center;
       max-width: 589px;
+      opacity: 0;
+      animation: fadeText 1.6s linear forwards;
+      animation-delay: 1s;
       h3,
       h1 {
         font-family: $font-family-ral;
@@ -194,6 +207,10 @@
         font-weight: 300;
         line-height: 1.5em;
         margin-bottom: rem(52px);
+      }
+      @keyframes fadeText {
+        0%{opacity: 0}
+        100%{opacity: 1}
       }
     }
     button {
@@ -710,6 +727,7 @@
 
 /* Excellent for Mobile Devices. */
 .devices {
+  overflow: hidden;
   &-image {
     @include background($size: contain, $position: center bottom);
     height: 100%;
@@ -768,10 +786,20 @@
           display: none;
           padding-left: 0;
           li {
+            position: relative;
             line-height: 1.5em;
             margin-bottom: 0;
             &::before {
               display: none;
+            }
+            &::after {
+              @include pseudo;
+              background-color: #fff;
+              background-image: url('../img/devices-insert-arrow.svg');
+              left: -1.5em;
+              width: 1.5em;
+              height: 1.5em;
+              @include background($size: 50%);
             }
           }
         }
@@ -1209,3 +1237,34 @@
   }
 }
 /*END Footer */
+
+/* Scroll Button */
+.scroll-button {
+  position: fixed;
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 50px;
+  right: 50px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid #392921;
+  cursor: pointer;
+  background-color: #fff;
+  transition: opacity .4s linear;
+  opacity: 0;
+  &.active {
+    opacity: 0.7;
+    &:hover {
+      opacity: 1;
+    }
+  }
+  svg {
+    max-width: 90%;
+    flex: 0 0 auto;
+    fill: #392921;
+  }
+}
+/*END Scroll Button */

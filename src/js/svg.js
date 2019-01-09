@@ -49,4 +49,18 @@ $(function () {
     $('.posts-slider .owl-prev').append(postsLeftArrow);
     $('.posts-slider .owl-next').append(postsRightArrow);
     /*END Posts slider */
+
+    /* Scroll Button */
+    let scrollButtonSvg = $('<?xml version="1.0" encoding="iso-8859-1"?>\n' +
+        '<!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->\n' +
+        '<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"\n' +
+        '\t viewBox="0 0 543.906 543.906" style="enable-background:new 0 0 543.906 543.906;" xml:space="preserve">\n' +
+        '<g>\n' +
+        '\t<path d="M0,271.953c0,150.194,121.759,271.953,271.953,271.953s271.953-121.759,271.953-271.953\n' +
+        '\t\tS422.148,0,271.953,0S0,121.759,0,271.953z M124.076,340.453l0.169-97.735L272.122,95.184l147.703,147.535v97.566L307.476,227.929\n' +
+        '\t\tv220.793h-71.556V228.778L124.076,340.453z"/>\n' +
+        '</g>\n' +
+        '</svg>\n');
+    $('.scroll-button').append(scrollButtonSvg);
+    /*END Scroll Button */
 });

@@ -9,11 +9,6 @@ $(window).on('load', function () {
 
 document.addEventListener("DOMContentLoaded", function (event) {
 
-    /*let block = $('.block');
-    $('button').on('click', function () {
-        popUp(block);
-    });*/
-
     /* MixitUp */
     $('#mix-row').mixItUp();
 
@@ -43,6 +38,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         touchDrag: true
     });
     /*END Top Slider */
+
     /* Video */
     let presentVideo = $('<iframe src="https://www.youtube.com/embed/tFIBOQqBUs0?controls=0;autoplay=1;start=2s;rel=0;loop=1" allow="accelerometer; encrypted-media; gyroscope; autoplay; picture-in-picture" allowfullscreen></iframe>');
 
@@ -150,7 +146,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     let wow = new WOW({
         boxClass: 'wow', // default
         animateClass: 'animated', // default
-        offset: 50, // default
+        offset: 150, // default
         mobile: false, // default
         live: true // default
     });
@@ -174,16 +170,42 @@ document.addEventListener("DOMContentLoaded", function (event) {
     //////////////////////////////
 
     function activeMenuLink() {
-        $('.header nav ul li a').each(function(){
+        $('.header.fixed nav ul li a').each(function(){
             let selector = $(this).attr('href');
             let windowTop = $(window).scrollTop();
             let sectionTop = $(selector).offset().top;
-            if(windowTop > sectionTop -150){
-                $('.header nav ul li a').removeClass('selected').filter(this).addClass('selected');
+            if(windowTop > sectionTop -100){
+                $('.header.fixed nav ul li a').removeClass('selected').filter(this).addClass('selected');
             }
         });
     }
-    activeMenuLink();
+
+    $(window).on('scroll', function(){
+        if ($(this).scrollTop() > 95) {
+            $('.header').addClass('fixed');
+        } else {
+            $('.header').removeClass('fixed');
+        }
+        $(btnScrollTop).css('opacity', '0.4');
+        activeMenuLink();
+        scrollBtn();
+    });
+
+    let btnScrollTop = $('.scroll-button');
+    function scrollBtn(){
+        let bodyScroll = $('html, body').scrollTop();
+        if(bodyScroll > 300) {
+            $(btnScrollTop).addClass('active');
+        } else {
+            $(btnScrollTop).removeClass('active');
+        }
+    }
+    scrollBtn();
+    $(btnScrollTop).on('click', function(){
+        $('html, body').animate({
+            scrollTop: 0
+        }, 600);
+    });
     /*END Scroll */
 
 });
