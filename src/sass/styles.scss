@@ -68,34 +68,71 @@
       padding-top: 15px;
       nav {
         position: fixed;
-        display: flex;
+        display: none;
         align-items: center;
         justify-content: center;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
+        overflow: hidden;
+        background-color: rgba(#000, .9);
         ul {
-          //width: 50px;
-          //height: 50px;
-          //border-radius: 50%;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          transition: opacity .1s linear;
+          transition-delay: .1s;
           overflow: hidden;
+          opacity: 0;
           li {
             font-size: rem(18px);
             font-style: normal;
             text-transform: uppercase;
             line-height: 1em;
             margin-bottom: .8em;
+            @include mediaMaxHeight(400px) {
+              margin-bottom: 0.7em;
+              font-size: 15px;
+            }
             a {
               color: #fff;
             }
           }
         }
       }
+      &.active {
+        ul {
+          opacity: 1;
+        }
+        .mob-nav {
+          pointer-events: none;
+          img {
+            &:nth-child(1) {
+              display: none;
+            }
+            &:nth-child(2) {
+              display: block;
+            }
+          }
+        }
+      }
       .mob-nav {
+        position: relative;
         width: 30px;
+        height: 30px;
         img {
+          position: absolute;
+          display: block;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
           max-width: 100%;
+          &:nth-child(1) {
+            z-index: 0;
+          }
           &:nth-child(2) {
             display: none;
           }
@@ -106,6 +143,7 @@
       width: 100%;
       padding-top: 20px;
       nav {
+        display: block !important;
         flex-grow: 3;
         ul {
           display: flex;
@@ -157,6 +195,9 @@
             }
           }
         }
+      }
+      .mob-nav {
+        display: none;
       }
     }
   }
@@ -1284,6 +1325,14 @@
     background-color: #111111;
     padding-top: 45px;
     padding-bottom: 50px;
+    @include mediaToDown($lg) {
+      padding-top: 25px;
+      padding-bottom: 30px;
+      .df--wrap {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
     .df--wrap {
       display: flex;
       justify-content: space-between;
@@ -1291,6 +1340,13 @@
     &-item {
       ul {
         display: inline-flex;
+        @include mediaToDown(458px) {
+          flex-wrap: wrap;
+          justify-content: center;
+          li {
+            margin-bottom: 0.7em;
+          }
+        }
         li {
           color: #555555;
           font-family: $font-size-base;
