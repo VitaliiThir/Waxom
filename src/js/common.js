@@ -186,7 +186,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
         } else {
             $('.header').removeClass('fixed');
         }
-        $(btnScrollTop).css('opacity', '0.4');
         activeMenuLink();
         scrollBtn();
     });
@@ -200,12 +199,26 @@ document.addEventListener("DOMContentLoaded", function (event) {
             $(btnScrollTop).removeClass('active');
         }
     }
-    scrollBtn();
     $(btnScrollTop).on('click', function(){
         $('html, body').animate({
             scrollTop: 0
         }, 600);
     });
     /*END Scroll */
+
+    /* Search */
+    function searchResize() {
+        let windowWidth = $(window).width();
+        if(windowWidth < 768 && windowWidth >= 576) {
+            $('.header .logo').after($('.search'));
+        } else {
+            $('.navigation nav').after($('.search'));
+        }
+    }
+    $(window).on('resize', function () {
+        searchResize();
+    });
+    searchResize();
+    /*END Search */
 
 });

@@ -32,19 +32,23 @@
 }
 ////////////////////////////////////////////////////////////
 .header {
-  position: fixed;
+  position: absolute;
   z-index: 10;
   top: 0;
   left: 0;
   right: 0;
   transition: all .4s linear;
-  padding-top: 40px;
-  &.fixed {
-    background-color: rgba(#45353B, .7);
-    transform: translateY(-25px);
-    padding-bottom: 15px;
-    .logo {
-      max-width: 160px;
+  padding-top: 15px;
+  @include mediaToUp($lg) {
+    padding-top: 40px;
+    position: fixed;
+    &.fixed {
+      background-color: rgba(#45353B, .7);
+      transform: translateY(-25px);
+      padding-bottom: 15px;
+      .logo {
+        max-width: 160px;
+      }
     }
   }
   .logo {
@@ -56,92 +60,140 @@
   }
   //////////////
   .navigation {
+    font-family: $font-family-base;
     display: flex;
-    width: 100%;
-    padding-top: 20px;
-    nav {
-      flex-grow: 3;
-      ul {
+    @include mediaToDown($sm) {
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 15px;
+      nav {
+        position: fixed;
         display: flex;
-        justify-content: space-around;
-        font-size: 14px;
-        li {
-          cursor: pointer;
-          flex-grow: 1;
-          text-align: center;
-          a {
-            position: relative;
-            display: block;
-            font-family: $font-family-base;
-            color: #ffffff;
-            transition: all .2s linear;
-            font-size: inherit;
-            font-weight: 300;
-            padding: 5px 0;
-            &::after,
-            &::before {
-              position: absolute;
-              content: "";
-              background-color: #c7b299;
-              transition: width .3s linear;
-              height: 2px;
-              width: 0;
+        align-items: center;
+        justify-content: center;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        ul {
+          //width: 50px;
+          //height: 50px;
+          //border-radius: 50%;
+          overflow: hidden;
+          li {
+            font-size: rem(18px);
+            font-style: normal;
+            text-transform: uppercase;
+            line-height: 1em;
+            margin-bottom: .8em;
+            a {
+              color: #fff;
             }
-            &::after {
-              right: 0;
-              bottom: 100%;
-            }
-            &::before {
-              left: 0;
-              top: 100%;
-            }
-            &:hover {
-              color: #c7b299;
+          }
+        }
+      }
+      .mob-nav {
+        width: 30px;
+        img {
+          max-width: 100%;
+          &:nth-child(2) {
+            display: none;
+          }
+        }
+      }
+    }
+    @include mediaToUp($sm) {
+      width: 100%;
+      padding-top: 20px;
+      nav {
+        flex-grow: 3;
+        ul {
+          display: flex;
+          justify-content: space-around;
+          font-size: 14px;
+          li {
+            cursor: pointer;
+            flex-grow: 1;
+            text-align: center;
+            a {
+              position: relative;
+              display: block;
+              color: #ffffff;
+              transition: all .2s linear;
+              font-size: inherit;
+              font-weight: 300;
+              padding: 5px 0;
               &::after,
               &::before {
-                width: 100%;
+                position: absolute;
+                content: "";
+                background-color: #c7b299;
+                transition: width .3s linear;
+                height: 2px;
+                width: 0;
               }
-            }
-            &.selected {
-              color: #c7b299;
-              &::after,
+              &::after {
+                right: 0;
+                bottom: 100%;
+              }
               &::before {
-                width: 100%;
+                left: 0;
+                top: 100%;
+              }
+              &:hover {
+                color: #c7b299;
+                &::after,
+                &::before {
+                  width: 100%;
+                }
+              }
+              &.selected {
+                color: #c7b299;
+                &::after,
+                &::before {
+                  width: 100%;
+                }
               }
             }
           }
         }
       }
     }
-    .search {
-      display: flex;
+  }
+  .search {
+    display: flex;
+    justify-content: flex-end;
+    @include mediaOnly($sm, $md) {
+      align-items: center;
+      padding-top: 15px;
+    }
+    @include mediaToUp($sm) {
       flex-grow: 1;
-      justify-content: flex-end;
-      div {
-        cursor: pointer;
-        margin-right: 30px;
-        &:last-child {
-          margin-right: 0;
+    }
+    div {
+      cursor: pointer;
+      margin-right: 30px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+    &-cart,
+    &-icon {
+      height: 25px;
+      width: 25px;
+      transition: opacity .2s linear;
+      @include mediaToDown($lg) {
+        &:active {
+          opacity: 0.6;
         }
       }
-      img {
-        max-width: 100%;
-        max-height: 100%;
-      }
-      &-cart,
-      &-icon {
-        height: 25px;
-        width: 25px;
-        transition: opacity .2s linear;
-        @include mediaToDown($lg) {
-          &:active {
-            opacity: 0.6;
-          }
-        }
-        @include mediaToUp($lg) {
-          &:hover {
-            opacity: 0.6;
-          }
+      @include mediaToUp($lg) {
+        &:hover {
+          opacity: 0.6;
         }
       }
     }
@@ -247,12 +299,18 @@
       }
     }
     .owl-next {
-      margin-right: 150px;
+      margin-right: 50px;
       background-image: url('../img/top_slider/right-arrow.svg');
+      @include mediaToUp($xl) {
+        margin-right: 150px;
+      }
     }
     .owl-prev {
       background-image: url('../img/top_slider/left-arrow.svg');
-      margin-left: 150px;
+      margin-left: 50px;
+      @include mediaToUp($xl) {
+        margin-left: 150px;
+      }
     }
   }
   .owl-dots {
@@ -264,7 +322,8 @@
     bottom: rem(40px);
     .owl-dot {
       span {
-        background-color: #869791;
+        transition: all .3s linear;
+        background-color: rgba(#fff, .3);
       }
       &.active {
         span {
@@ -628,7 +687,10 @@
 .presentation {
   &-video {
     position: relative;
-    height: 705px;
+    height: 605px;
+    @include mediaToUp($xl) {
+      height: 705px;
+    }
     iframe {
       border: none;
       width: 100%;
@@ -733,8 +795,12 @@
     height: 100%;
   }
   &-description {
-    padding-top: 195px;
-    padding-bottom: 180px;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    @include mediaToUp($xl) {
+      padding-top: 195px;
+      padding-bottom: 180px;
+    }
     h2 {
       color: #555555;
       font-family: $font-family-ral;
@@ -756,7 +822,10 @@
       margin-bottom: 2.8em;
     }
     ul {
-      padding-left: 100px;
+      padding-left: 50px;
+      @include mediaToUp($xl) {
+        padding-left: 100px;
+      }
       li {
         position: relative;
         line-height: 1.5em;
@@ -815,6 +884,19 @@
   padding-top: 70px;
   padding-bottom: 60px;
   figure {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    &::after {
+      @include pseudo;
+      background-color: #fff;
+      top: 100%;
+      left: 50%;
+      height: 2px;
+      width: rem(30px);
+      margin-left: rem(-15px);
+    }
     .counter__icon {
       padding-bottom: rem(30px);
       img {
@@ -832,22 +914,12 @@
       margin-bottom: 0.4em;
     }
     h4 {
-      position: relative;
       color: #c7b299;
       font-size: 14px;
       font-weight: 300;
       line-height: 1em;
       text-transform: uppercase;
       padding-bottom: rem(30px);
-      &::after {
-        @include pseudo;
-        background-color: #fff;
-        top: 100%;
-        left: 50%;
-        height: 2px;
-        width: rem(30px);
-        margin-left: rem(-15px);
-      }
     }
   }
 }
@@ -944,6 +1016,9 @@
     figcaption {
       padding: rem(30px);
       transition: background-color 1s linear;
+      @include mediaOnly($lg, $xl) {
+        padding: 20px;
+      }
       h4 {
         color: #555555;
         font-family: $font-family-ral;
@@ -1189,6 +1264,7 @@
       padding-top: rem(25px);
       &-item {
         position: relative;
+        overflow: hidden;
         @include responsive-ratio(1, 0.77, true);
         width: 50%;
         flex: 0 0 auto;
@@ -1199,6 +1275,7 @@
           left: 0;
           bottom: 0;
           right: 0;
+          max-width: 100%;
         }
       }
     }
