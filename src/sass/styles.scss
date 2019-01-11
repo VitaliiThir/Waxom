@@ -10,16 +10,19 @@
   color: #ffffff;
   cursor: pointer;
   transition: all .2s linear;
-  font-size: rem(14px);
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
   text-transform: uppercase;
   padding: $padding;
   border: 1px solid #998675;
-  border-bottom: 3px solid darken(#998675, 20%);
-  border-radius: 3px;
+  border-bottom: 0.2em solid darken(#998675, 20%);
+  border-radius: 0.2em;
   background-color: #998675;
-  @include mediaToUp($lg) {
+  @include mediaToDown($md) {
+    font-size: 12px;
+  }
+  @include mediaToDown($lg) {
     &:active {
       background-color: transparent;
     }
@@ -68,7 +71,6 @@
       padding-top: 15px;
       nav {
         position: fixed;
-        display: none;
         align-items: center;
         justify-content: center;
         top: 0;
@@ -77,6 +79,8 @@
         bottom: 0;
         overflow: hidden;
         background-color: rgba(#000, .9);
+        transition: transform .3s ease;
+        transform: translateY(-100%);
         ul {
           position: absolute;
           top: 50%;
@@ -98,11 +102,18 @@
             }
             a {
               color: #fff;
+              &:active {
+                background-color: #777;
+              }
             }
           }
         }
       }
       &.active {
+        nav {
+          display: block;
+          transform: translateY(0);
+        }
         ul {
           opacity: 1;
         }
@@ -114,6 +125,8 @@
             }
             &:nth-child(2) {
               display: block;
+              opacity: 1;
+              transform: rotate(270deg);
             }
           }
         }
@@ -130,11 +143,13 @@
           right: 0;
           bottom: 0;
           max-width: 100%;
+          max-height: 100%;
           &:nth-child(1) {
             z-index: 0;
           }
           &:nth-child(2) {
-            display: none;
+            transition: all .3s ease;
+            opacity: 0;
           }
         }
       }
@@ -250,9 +265,7 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+    @include background;
     &:hover {
       cursor: grab;
     }
@@ -266,6 +279,12 @@
       bottom: 0;
       right: 0;
       left: 0;
+    }
+    @include mediaToDown($md) {
+      height: 700px;
+      figcaption {
+        max-width: 80%;
+      }
     }
     figcaption {
       position: relative;
@@ -325,9 +344,7 @@
     pointer-events: none;
     .owl-next,
     .owl-prev {
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
+      @include background($size: contain);
       background-color: transparent;
       transition: opacity .2s linear;
       pointer-events: all;
@@ -337,6 +354,12 @@
       &:hover {
         background-color: transparent;
         opacity: 1;
+      }
+      @include mediaToDown($lg) {
+        margin: 0;
+      }
+      @include mediaToUp($xl) {
+        background-size: cover;
       }
     }
     .owl-next {
@@ -382,6 +405,10 @@
   margin-top: rem(60px);
   margin-bottom: rem(80px);
   background-color: #fff;
+  @include mediaToDown($md) {
+    margin-top: rem(30px);
+    margin-bottom: rem(50px);
+  }
   figure {
     position: relative;
     height: 100%;
@@ -409,6 +436,10 @@
       &::after {
         background-color: #c7b299;
       }
+    }
+    @include mediaToDown($sm) {
+      max-width: 330px;
+      @include mx-auto;
     }
     .services-icon {
       display: flex;
@@ -456,6 +487,9 @@
   font-style: normal;
   text-align: center;
   padding-top: rem(85px);
+  @include mediaToDown($md) {
+    padding-top: rem(50px);
+  }
   &__heading {
     font-family: $font-family-ral;
     @include rfs(30);
@@ -483,6 +517,7 @@
     }
   }
   figure {
+    overflow: hidden;
     img {
       max-width: 100%;
     }
@@ -494,6 +529,14 @@
     padding-top: rem(50px);
     padding-bottom: rem(50px);
     background-image: linear-gradient(to right, #211b19 0%, #4e3427 100%);
+    @include mediaToDown($md) {
+      text-align: center;
+      padding-top: rem(30px);
+      padding-bottom: rem(30px);
+      button {
+        margin-top: 25px;
+      }
+    }
     h3 {
       font-family: $font-family-ral;
       color: #ffffff;
@@ -526,10 +569,21 @@
   padding-top: rem(80px);
   padding-bottom: rem(80px);
   font-style: normal;
+  @include mediaToDown($sm) {
+    padding-top: rem(50px);
+    padding-bottom: rem(50px);
+    &__description {
+      margin-bottom: 25px;
+    }
+    nav {
+      margin-bottom: 20px;
+    }
+  }
   &__description {
     text-align: center;
     margin-bottom: rem(40px);
     max-width: 780px;
+    overflow: hidden;
     @include mx-auto;
     h2 {
       color: #555555;
@@ -556,6 +610,16 @@
     ul {
       font-family: $font-size-base;
       display: flex;
+      @include mediaToDown($sm) {
+        flex-wrap: wrap;
+        justify-content: center;
+        li {
+          flex: 0 0 auto;
+          padding-left: rem(15px);
+          padding-right: rem(15px);
+          margin-bottom: rem(15px);
+        }
+      }
       li {
         flex-grow: 1;
         color: #8c8c8c;
@@ -594,6 +658,10 @@
   }
   &-items {
     figure {
+      @include mediaToDown($sm) {
+        max-width: 330px;
+        @include mx-auto;
+      }
       .projects-items__img {
         position: relative;
         @include responsive-ratio(1, 0.62, true);
@@ -712,8 +780,10 @@
       @include button;
       @include mx-auto;
       margin-top: rem(20px);
-      &:hover {
-        color: #998675;
+      @include mediaToUp($lg) {
+        &:hover {
+          color: #998675;
+        }
       }
     }
   }
@@ -729,6 +799,15 @@
   &-video {
     position: relative;
     height: 605px;
+    @include mediaToDown($sm) {
+      height: 300px;
+    }
+    @include mediaOnly($sm, $md) {
+      height: 350px;
+    }
+    @include mediaOnly($md, $lg) {
+      height: 450px;
+    }
     @include mediaToUp($xl) {
       height: 705px;
     }
@@ -760,6 +839,7 @@
         z-index: 1;
         text-align: center;
         max-width: 552px;
+        margin: 0 15px;
         &-button {
           position: relative;
           display: flex;
@@ -772,6 +852,10 @@
           cursor: pointer;
           transition: all .3s linear;
           @include mx-auto;
+          @include mediaToDown($sm) {
+            width: 70px;
+            height: 70px;
+          }
           &:hover {
             box-shadow: 0 0 30px 0 rgba(#000, .3);
             img {
@@ -805,6 +889,12 @@
           color: #ffffff;
           font-style: normal;
           margin-top: rem(45px);
+          @include mediaToDown($sm) {
+            margin-top: rem(15px);
+            h3 {
+              margin-bottom: 0.7em;
+            }
+          }
           h3 {
             font-family: $font-family-ral;
             @include rfs(30);
@@ -831,13 +921,23 @@
 /* Excellent for Mobile Devices. */
 .devices {
   overflow: hidden;
+  @include mediaToDown($lg) {
+    padding-top: 50px;
+  }
   &-image {
     @include background($size: contain, $position: center bottom);
     height: 100%;
+    @include mediaToDown($lg) {
+      height: 400px;
+    }
   }
   &-description {
     padding-top: 100px;
     padding-bottom: 100px;
+    @include mediaToDown($lg) {
+      padding-top: 50px;
+      padding-bottom: 50px;
+    }
     @include mediaToUp($xl) {
       padding-top: 195px;
       padding-bottom: 180px;
@@ -864,6 +964,15 @@
     }
     ul {
       padding-left: 50px;
+      @include mediaToDown($md) {
+        padding-left: 0;
+        li {
+          padding-left: 30px;
+          &::before {
+            left: 0;
+          }
+        }
+      }
       @include mediaToUp($xl) {
         padding-left: 100px;
       }
@@ -970,6 +1079,10 @@
 .posts {
   padding-top: 80px;
   padding-bottom: 80px;
+  @include mediaToDown($sm) {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
   &__heading {
     margin-bottom: rem(35px);
     text-align: center;
@@ -995,6 +1108,10 @@
   }
   &-slider {
     figure {
+      @include mediaToDown($sm) {
+        max-width: 330px;
+        @include mx-auto;
+      }
       &:hover {
         cursor: grab;
       }
@@ -1057,7 +1174,12 @@
     figcaption {
       padding: rem(30px);
       transition: background-color 1s linear;
-      @include mediaOnly($lg, $xl) {
+      @include mediaToDown($md) {
+        padding: 10px;
+        border: 1px solid rgba(#4a3100, .3);
+        border-top: none;
+      }
+      @include mediaOnly($md, $xl) {
         padding: 20px;
       }
       h4 {
@@ -1187,6 +1309,14 @@
   z-index: 0;
   padding-top: 140px;
   padding-bottom: 140px;
+  @include mediaToDown($sm) {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  @include mediaOnly($sm, $lg) {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
   @include background;
   &::after {
     @include pseudo;
@@ -1202,6 +1332,10 @@
       }
       &:active {
         cursor: grabbing;
+      }
+      @include mediaToDown($sm) {
+        max-width: 216px;
+        @include mx-auto;
       }
       img {
         max-width: 100%;
@@ -1225,11 +1359,18 @@
     background-color: #191919;
     padding-bottom: 80px;
     padding-top: 80px;
+    @include mediaToDown($sm) {
+      padding-bottom: 50px;
+      padding-top: 50px;
+    }
     .logo {
       figure {
         margin-bottom: rem(30px);
         img {
           max-width: 100%;
+          @include mediaToDown($sm) {
+            max-width: 45%;
+          }
         }
       }
     }
@@ -1263,6 +1404,9 @@
       font-style: normal;
       line-height: 1em;
       margin-top: 1em;
+      @include mediaToDown($m) {
+        text-align: center;
+      }
     }
     ul {
       padding-bottom: rem(20px);
@@ -1306,9 +1450,11 @@
       &-item {
         position: relative;
         overflow: hidden;
-        @include responsive-ratio(1, 0.77, true);
-        width: 50%;
+        @include responsive-ratio(1, 0.75, true);
+        width: 45%;
+        margin-bottom: 12px;
         flex: 0 0 auto;
+        @include mx-auto;
         img {
           position: absolute;
           display: block;
@@ -1316,7 +1462,7 @@
           left: 0;
           bottom: 0;
           right: 0;
-          max-width: 100%;
+          width: 100%;
         }
       }
     }
@@ -1386,12 +1532,27 @@
   border: 2px solid #392921;
   cursor: pointer;
   background-color: #fff;
-  transition: opacity .4s linear;
-  opacity: 0;
+  transition: all .4s linear;
+  transform: translateY(300%);
+  opacity: 0.7;
+  @include mediaToDown($sm) {
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+  }
+  @include mediaOnly($sm, $md) {
+    bottom: 30px;
+    right: 30px;
+    width: 40px;
+    height: 40px;
+  }
   &.active {
-    opacity: 0.7;
-    &:hover {
-      opacity: 1;
+    transform: translateY(0);
+    @include mediaToUp($lg) {
+      &:hover {
+        opacity: 1;
+      }
     }
   }
   svg {

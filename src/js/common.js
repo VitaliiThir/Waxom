@@ -92,14 +92,21 @@ document.addEventListener("DOMContentLoaded", function (event) {
     /* Posts */
     $('#posts-slider').owlCarousel({
         responsive: {
+            0: {
+                items: 1,
+                margin: 10
+            },
             576: {
-                items: 1
+                items: 2,
+                margin: 10
             },
             768: {
-                items: 2
+                items: 2,
+                center: true,
             },
             992: {
-                items: 3
+                items: 3,
+                center: true,
             }
         },
         autoplay: true,
@@ -110,7 +117,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
         navText: false,
         navSpeed: 1500,
         margin: 30,
-        center: true,
         loop: true,
         mouseDrag: true,
         touchDrag: true
@@ -120,11 +126,17 @@ document.addEventListener("DOMContentLoaded", function (event) {
     /* Partners slider */
     $('#partners-slider').owlCarousel({
         responsive: {
+            0: {
+                items: 1,
+                margin: 10
+            },
             576: {
-                items: 2
+                items: 2,
+                margin: 35
             },
             768: {
-                items: 3
+                items: 3,
+                margin: 20
             },
             992: {
                 items: 4
@@ -146,8 +158,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     let wow = new WOW({
         boxClass: 'wow', // default
         animateClass: 'animated', // default
-        offset: 150, // default
-        mobile: false, // default
+        offset: 100, // default
         live: true // default
     });
     wow.init();
@@ -232,17 +243,19 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     function mobNav() {
         if (windowWidth < 576) {
+            $(nav).css('display', 'block');
             $('.mob-nav').on('click', function () {
-                $(nav).fadeIn(200);
                 $(navigation).addClass('active');
+                $('body').addClass('overflow');
                 $('.navigation.active nav').one('click', function () {
-                    $(nav).fadeOut(200);
                     $(navigation).removeClass('active');
+                    $('body').removeClass('overflow');
                 });
             });
         } else if (windowWidth >= 576) {
             $(navigation).removeClass('active');
-            $(nav).fadeOut(200);
+            $(nav).css('display', 'none');
+            $('body').removeClass('overflow');
         }
     }
 
